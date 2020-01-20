@@ -8,3 +8,6 @@ android:
     - platform-tools
     - extra-android-support # because I'm use support library
     - extra-android-m2repository # because I'm use support librarys
+
+script:
+  ./gradlew build connectedCheck
