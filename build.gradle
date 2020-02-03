@@ -29,24 +29,10 @@ sonarqube {
     properties {
         property "sonar.projectKey", "matthieulourme_progAndroid"
         property "sonar.tests", "src/test/java"
-        property "sonar.java.coveragePlugin", "jacoco"
-        property "sonar.jacoco.reportPath", "**/jacoco/*.exec"
-        property "sonar.test.inclusions", "**/*Test*/**"
-        property "sonar.sourceEncoding", "UTF-8"
-        property "sonar.sources", "src/main/java"
-        property "sonar.exclusions", '**/*Test*/**,' +
-                '*.json,' +
-                '**/*test*/**,' +
-                '**/.gradle/**,' +
-                '**/R.class,' +
-                '**/R$*.class'
+
     }
 }
 
-jacoco {
-    toolVersion = "0.8.4"
-    reportsDir = file("$buildDir/reports")
-}
 
 allprojects {
     repositories {
@@ -56,9 +42,7 @@ allprojects {
     }
 }
 
-tasks.withType(Test) {
-    jacoco.includeNoLocationClasses = true
-}
+
 
 
 

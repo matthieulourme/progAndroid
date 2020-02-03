@@ -33,6 +33,5 @@ addons:
 sudo: false
 
 script:
-     - ./gradlew test
-     - ./gradlew sonarqube -Dsonar.host.url=http://localhost:9000/ -Dsonar.login=matthieulourme
+     - sonar-runner
 
