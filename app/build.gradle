@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin:'jacoco-android'
+apply plugin:'jacoco'
 
 android {
     compileSdkVersion 29
@@ -13,15 +13,18 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            testCoverageEnabled = true
+            testCoverageEnabled true
         }
+
     }
     testOptions {
+        unitTests.returnDefaultValues = true
         unitTests.all {
             jacoco {
                 includeNoLocationClasses = true
@@ -30,17 +33,7 @@ android {
     }
 }
 
-jacoco {
-    toolVersion = "0.7.4.201502262128"
-}
 
-// TODO: Setup jacoco report format. We need xml for Sonarqube
-
-jacocoAndroidUnitTestReport {
-    csv.enabled false
-    html.enabled false
-    xml.enabled true
-}
 
 
 
@@ -52,3 +45,4 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
+
