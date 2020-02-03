@@ -35,3 +35,6 @@ sudo: false
 script:
      -  ./gradlew sonarqube
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
