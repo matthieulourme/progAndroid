@@ -30,3 +30,17 @@ before_script:
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
+
+
+  addons:
+      sonarcloud:
+        organization: "matthieulourme"
+        token:
+        secure: "T5nZuLdM0OxvQ0vCdqNsHVmCBl6PhNP0vUqfRkf8zt4VprzQzXfrbe2lJvArlYW6JYHuI2kI3quZTwyNHW/60z85ZFK6e7tHedMv/7ruJ7l3+w0U5hxSokqlgAvMmY8cBDOvhQrfdhVkaX41Xx0E01tbE2Lw0jPo7fSHYq+DfBonP5SUTzKYtBecQnc4BejBXs+wEn/dwkcEB1D5YUhgDH+mYSaUgWBn6J0fOuCxm4sUf2kfXyPGaCelpVFGtL7lAPoo59pUUhWobLEN5DLA1LY8ZabXe3qrWxHxK+9HpgnHzWri+lNKFfALf6j/4JzLoGBsKtiBDfPBpBjrQtB+eT4mYr2y9mIa53/QvGuVvRRO+MYXriFn1Zco2iFXdnQ+62BARCINeQfPWl+uB6jhdVMjdXSxvv+r7WOmmMmQo/uwfvigb+/b3TZ4M6XJizXfFjDqnKy6xei08BCRPCTeGCXll6CrfreUkrrNwxbgBu0V6ZJZgzNeTHtrr51KwO1QKSTv+nKi2g1B8c816TYdV39JDD+wQjAkD/ZX0KlqD0ET+Lzg7kB72hWg94HhgZgNO1jnTrK0NHaGzr2zFzzCCi6R/XUHElgmBZbjRBaG3FKW9GHMgCB8NrrKcOud4SdyMIOS88hcxXcAK2B9AHOdWXP1mlyla8AtmR6UAPpM+4Y="
+    sudo: false
+
+    script:
+      #- ./gradlew check jacocoTestReport coveralls sendCoverageToCodacy
+      #- bash <(curl -s https://codecov.io/bash)
+      #- sonar-scanner
+      - ./gradlew sonarqube
